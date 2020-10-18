@@ -1,6 +1,7 @@
 package com.cezklosowski.module.books;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "books")
@@ -9,7 +10,11 @@ public class BooksEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotNull(message = "Author for books is required")
 	private String author;
+
+	@NotNull(message = "Title for book is required")
 	private String title;
 
 	public Long getId() {
