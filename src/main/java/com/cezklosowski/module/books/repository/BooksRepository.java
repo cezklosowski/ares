@@ -1,4 +1,4 @@
-package com.cezklosowski.module.books;
+package com.cezklosowski.module.books.repository;
 
 import com.cezklosowski.module.books.entity.BooksEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
