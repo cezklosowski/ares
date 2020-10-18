@@ -1,6 +1,8 @@
 package com.cezklosowski.module.books;
 
+import com.cezklosowski.module.books.dto.BookDto;
 import com.cezklosowski.module.books.entity.BooksEntity;
+import com.cezklosowski.module.books.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,24 +16,24 @@ public class BooksController {
 	private BooksRepository booksRepository;
 
 	@GetMapping(value = "/api/books/{id}")
-	public BooksEntity getBook(@PathVariable Long id) {
-		return booksRepository.findById(id).get();
+	public BookDto getBook(@PathVariable Long id) {
+		return BookMapper.map(booksRepository.findById(id).get());
 	}
 
 	@GetMapping("/api/books")
-	public List<BooksEntity> getBooks() {
-		return booksRepository.findAll();
+	public List<BookDto> getBooks() {
+		return BookMapper.map(booksRepository.findAll());
 	}
 
 	@PostMapping("/api/books")
-	public BooksEntity newBooks(@Valid @RequestBody BooksEntity booksEntity) {
-		return booksRepository.saveAndFlush(booksEntity);
+	public BookDto newBooks(@Valid @RequestBody BooksEntity booksEntity) {
+		return BookMapper.map(booksRepository.saveAndFlush(booksEntity));
 	}
 
 	@PutMapping("/api/books/{id}")
-	public BooksEntity updateBooks(@PathVariable Long id,
+	public BookDto updateBooks(@PathVariable Long id,
 	                               @RequestBody BooksEntity booksEntity) {
-		return booksRepository.saveAndFlush(booksEntity.setId(id));
+		return BookMapper.map(booksRepository.saveAndFlush(booksEntity.setId(id)));
 	}
 
 	@DeleteMapping("/api/books/{id}")
