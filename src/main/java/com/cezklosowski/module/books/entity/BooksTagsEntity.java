@@ -1,4 +1,4 @@
-package com.cezklosowski.module.books;
+package com.cezklosowski.module.books.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,5 +1,6 @@
 package com.cezklosowski.module.books;
 
+import com.cezklosowski.module.books.entity.BooksEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
