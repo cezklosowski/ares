@@ -1,5 +1,6 @@
 package com.cezklosowski.module.books.mapper;
 
+import com.cezklosowski.module.books.dto.BookDetailsDto;
 import com.cezklosowski.module.books.dto.BookDto;
 import com.cezklosowski.module.books.entity.BooksEntity;
 
@@ -13,7 +14,9 @@ public class BookMapper {
         return new BookDto()
                 .setId(entity.getId())
                 .setAuthor(entity.getAuthor())
-                .setTitle(entity.getTitle());
+                .setTitle(entity.getTitle())
+                .setDetails(BookDetailsMapper.map(entity.getDetails()))
+                .setTags(BooksTagsMapper.map(entity.getTags()));
     }
 
     public static List<BookDto> map(List<BooksEntity> entities) {

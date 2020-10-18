@@ -1,10 +1,16 @@
 package com.cezklosowski.module.books.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Set;
+
+
 public class BookDto {
 
     private Long id;
     private String author;
     private String title;
+    private BookDetailsDto details;
+    private Set<String> tags;
 
     public Long getId() {
         return id;
@@ -30,6 +36,24 @@ public class BookDto {
 
     public BookDto setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public BookDetailsDto getDetails() {
+        return details;
+    }
+
+    public BookDto setDetails(BookDetailsDto details) {
+        this.details = details;
+        return this;
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public BookDto setTags(Set<String> tags) {
+        this.tags = tags;
         return this;
     }
 }

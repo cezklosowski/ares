@@ -1,7 +1,9 @@
 package com.cezklosowski.module.books;
 
 import com.cezklosowski.module.books.dto.BookDto;
+import com.cezklosowski.module.books.dto.BookForm;
 import com.cezklosowski.module.books.entity.BooksEntity;
+import com.cezklosowski.module.books.mapper.BookFormMapper;
 import com.cezklosowski.module.books.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +28,8 @@ public class BooksController {
 	}
 
 	@PostMapping("/api/books")
-	public BookDto newBooks(@Valid @RequestBody BooksEntity booksEntity) {
+	public BookDto newBooks(@Valid @RequestBody BookForm form) {
+		BooksEntity booksEntity = BookFormMapper.map(form);
 		return BookMapper.map(booksRepository.saveAndFlush(booksEntity));
 	}
 
